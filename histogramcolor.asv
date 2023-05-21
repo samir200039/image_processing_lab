@@ -1,0 +1,41 @@
+
+% Load a grayscale image
+image = imread('house.tif');
+
+% Compute histogram
+histogram = zeros(256, 1);
+[height, width] = size(image);
+for y = 1:height
+    for x = 1:width
+        intensity = image(y, x);
+        histogram(intensity + 1) = histogram(intensity + 1) + 1;
+    end
+end
+
+% Display the histogram
+bar(0:255, histogram);
+xlabel('Intensity');
+ylabel('Frequency');
+title('Histogram of Grayscale Image');
+
+% Load a color image
+image = imread('gi.jpg');
+
+% Convert to grayscale
+gray_image = rgb2gray(image);
+
+% Compute histogram
+histogram = zeros(256, 1);
+[height, width] = size(gray_image);
+for y = 1:height
+    for x = 1:width
+        intensity = gray_image(y, x);
+        histogram(intensity + 1) = histogram(intensity + 1) + 1;
+    end
+end
+
+% Display the histogram
+bar(0:255, histogram);
+xlabel('Intensity');
+ylabel('Frequency');
+title('Histogram of Grayscale Image');
